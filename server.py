@@ -100,7 +100,7 @@ def startPairing():
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    sslSock = ssl.SSLContext.wrap_socket(sock,
+    sslSock = ssl.wrap_socket(sock,
                         keyfile="key.pem",
                         certfile="cert.pem",
                         do_handshake_on_connect=True)

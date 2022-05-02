@@ -2,9 +2,9 @@
 
 This API server receives commands and send signals to the specified Android TV box as a remote control. 
 
-Although it's known to be much faster than ADB, not all TV boxes are compatible. 
+Although it is known to be much faster than Android Debug Bridge method (ADB), not all TV boxes are compatible. 
 
-## 1. Prepairations
+## 1. Preparations
 **Step 1: Create Python 3 virtual environment (venv), install all required packages, and activate (venv).**
 
 It's a good practice to run as separate, new user. 
@@ -25,7 +25,7 @@ python3 certificate_generator.py
 
 Take a look at configs/server.json. if isDeployed is false, the app will run in debug mode at 127.0.0.1. Unless there's something wrong, you should just ignore it. You may need to update *boxIp* value also. 
 
-Edit /etc/systemd/system/androidtvcontroller.service with Nano or any other text editor: 
+Create /etc/systemd/system/androidtvcontroller.service with Nano or any other text editor: 
 
 ```
 [Unit]

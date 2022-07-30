@@ -228,6 +228,6 @@ if __name__ == '__main__':
         pass
 
     if isDeployed:
-        serve(app, host=host, port=port)
+        serve(app, host=host, port=port, threads=1, ident=None)
     else:
         app.run(debug=True, host="127.0.0.1", port=port)

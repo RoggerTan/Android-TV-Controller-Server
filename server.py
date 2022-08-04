@@ -5,7 +5,7 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, make_response
 from waitress import serve
 from config import configHelper
 from sending_keys import SendingKeySocket
@@ -85,10 +85,7 @@ def sendSignal(key):
 def signal():
     key = request.args.get("key")
     sendSignal(key)
-    return jsonify({
-        "success": True,
-        "message": None
-    })
+    return make_response()
 
 @app.route("/startpairing", methods=["GET"])
 def startPairing():
@@ -138,27 +135,18 @@ def startPairing():
                     msg = json.dumps(message)
 
                 elif messageType == 31:
-                    return jsonify({
-                        "success": True,
-                        "message": None
-                    })
+                    return make_response()
 
                 elif messageType == 41:
                     sslSock.close()
                     break
             else:
-                return jsonify({
-                    "success": True,
-                    "message": None
-                })
+                return make_response()
 
             sslSock.send((len(msg)).to_bytes(4, byteorder='big'))
             sslSock.send(msg.encode())
 
-    return jsonify({
-        "success": True,
-        "message": None
-    })
+    return make_response()
 
 @app.route("/pairing", methods=["GET"])
 def pairing():
@@ -207,10 +195,7 @@ def pairing():
     messageStatus = None
     messageType = None
 
-    return jsonify({
-        "success": True,
-        "message": None
-    })
+    return make_response()
 
 if __name__ == '__main__':
     isDeployed = configHelper.read("server")["isDeployed"]

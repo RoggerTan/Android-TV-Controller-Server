@@ -14,6 +14,7 @@ class SendingKeySocket:
         if sock is None:
             self.sock = socket.socket(
                 socket.AF_INET, socket.SOCK_STREAM)
+            self.sock.settimeout(5)
         else:
             self.sock = sock
         self.host = host_address
